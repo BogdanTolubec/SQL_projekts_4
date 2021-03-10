@@ -1,0 +1,24 @@
+1)SELECT id,COUNT(title),SUM(price),AVG(price),MIN(price),MAX(price) FROM coputer1
+2)SELECT COUNT(title) FROM coputer1 WHERE price iS NULL
+3)SELECT id,COUNT(title),SUM(price),AVG(price),MIN(price),MAX(price) FROM coputer1 WHERE new LIKE 'Yes';
+SELECT id,COUNT(title),SUM(price),AVG(price),MIN(price),MAX(price) FROM coputer1 WHERE new LIKE 'No'
+4)SELECT dates,COUNT(title),SUM(price),AVG(price),MIN(price),MAX(price) FROM coputer1 GROUP BY Year(dates)
+5)SELECT dates,COUNT(title),SUM(price),AVG(price),MIN(price),MAX(price) FROM coputer1 WHERE price < 10 OR price > 20
+GROUP BY Year(dates)
+6)SELECT dates,COUNT(title),SUM(price),AVG(price),MIN(price),MAX(price) FROM coputer1 GROUP BY Year(dates)
+ORDER BY COUNT(title) DESC
+7)SELECT COUNT(codes) FROM coputer1;
+SELECT COUNT(DISTINCT codes) FROM coputer1
+8)SELECT title, COUNT(LEFT(title,1)) FROM coputer1 GROUP BY LEFT(title,1)
+9)SELECT title, COUNT(LEFT(title,1)) FROM coputer1 WHERE LEFT(title,1) NOT BETWEEN 'A' AND 'Z' AND LEFT(title,1) NOT BETWEEN '0' AND '9' GROUP BY LEFT(title,1)
+10)SELECT title, YEAR(dates), COUNT(LEFT(title,1)) FROM coputer1 WHERE (LEFT(title,1) NOT BETWEEN 'A' AND 'Z' AND LEFT(title,1) NOT BETWEEN '0' AND '9') AND YEAR(dates)>2000 GROUP BY LEFT(title,1)
+11)SELECT title, YEAR(dates), COUNT(LEFT(title,1)) FROM coputer1 WHERE (LEFT(title,1) NOT BETWEEN 'A' AND 'Z' AND LEFT(title,1) NOT BETWEEN '0' AND '9') AND YEAR(dates)>2000 GROUP BY LEFT(title,1) ORDER BY LEFT(title,1)
+12)SELECT id,dates,COUNT(title),SUM(price),AVG(price),MIN(price),MAX(price) FROM coputer1 GROUP BY MONTH(dates)
+13)SELECT id,dates,COUNT(title),SUM(price),AVG(price),MIN(price),MAX(price) FROM coputer1 WHERE dates IS NOT NULL GROUP BY MONTH(dates)
+14)SELECT id,dates,COUNT(title),SUM(price),AVG(price),MIN(price),MAX(price) FROM coputer1 WHERE dates IS NOT NULL GROUP BY MONTH(dates) ORDER BY YEAR_MONTH(dates)
+15)SELECT title, new, counts, price ,price*counts AS 'all price UAN', price*counts*28 AS 'all price UAN', price*counts*0.81 AS 'all price EUR', price*counts*74.35 AS 'all price RUB' FROM coputer1
+16)SELECT title, new, counts, price ,ROUND(price*counts) AS 'all price UAN', ROUND(price*counts*28) AS 'all price UAN', ROUND(price*counts*0.81) AS 'all price EUR', ROUND(price*counts*74.35) AS 'all price RUB' FROM coputer1
+17)SELECT id,production,COUNT(title),SUM(price),AVG(price),MIN(price),MAX(price) FROM coputer1 GROUP BY production ORDER BY production
+18)
+19)
+20)SELECT id,production,ROUND(price*100/pages) AS 'Price for 1 pages',COUNT(title),SUM(price),AVG(price),MIN(price),MAX(price) FROM coputer1 WHERE ROUND(price*100/pages)>10 GROUP BY production ORDER BY production
